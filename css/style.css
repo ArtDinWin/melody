@@ -92,6 +92,9 @@ margin-right: 40px;
     opacity: 1;
     cursor: pointer;
 }
+path.current-floor {
+    opacity: 1;
+}
 .counter{
     color: #635854;
     font-family: "Bebas Neue", serif;
