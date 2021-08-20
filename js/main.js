@@ -8,6 +8,13 @@ var modal = $(".modal");
 var modalCloseButton = $(".modal-close-button");
 var viewFlatsButton = $(".view-flats");
 
+var flatsPath = $(".flats path"); // Каждая отдельная квартира в svg
+var flatItemA = $(".flat-item a"); // Каждая отдельная ссылка на квартиру
+var currentFlat = 40; // переменная где хранится текущий этаж
+
+
+
+
 // on('click' при клике или on('mouseover' при наведении
    floorPath.on('mouseover', function(){
        floorPath.removeClass('current-floor');  // удаляем активный класс у этажей
@@ -15,6 +22,27 @@ currentFloor = $(this).attr("data-floor"); // получаем значение 
     $(".counter").text(currentFloor); // записываем значение этажа в счетчик
     $(`[data-floor=${currentFloor}]`).toggleClass("current-floor"); // подсвечиваем текущий этаж, чтобы после ухода с этажа он был подсвеченный
 });
+
+ flatsPath.on('mouseover', function(){ // подсвечиваем ссылки на квартиры по наведению мыши на картинку
+      flatItemA.removeClass('aktive-link');  // удаляем активный класс у ссылок на квартиру
+      flatsPath.removeClass('current-flat');  // удаляем активный класс у картинок на квартиру
+    currentFlat = $(this).attr("data-flat"); // получаем значение текущей квартиры по наведению на картинку
+      $(`[data-flat-aktive=${currentFlat}]`).toggleClass("aktive-link"); // подсвечиваем текущую ссылку на квартиру, чтобы после ухода с квартиры ссылка была подсвеченной
+$(`[data-flat=${currentFlat}]`).toggleClass("current-flat"); // подсвечиваем текущую квартиру на картинке
+});
+
+
+ flatItemA.on('mouseover', function(){ // подсвечиваем картинку на квартиру по наведению мыши на ссылку
+
+          flatItemA.removeClass('aktive-link');  // удаляем активный класс у ссылок на квартиру
+      flatsPath.removeClass('current-flat');  // удаляем активный класс у картинок на квартиру
+     currentFlat = $(this).attr("data-flat-aktive"); // получаем значение текущей квартиры по ссылке
+      $(`[data-flat-aktive=${currentFlat}]`).toggleClass("aktive-link"); // подсвечиваем текущую ссылку на квартиру, чтобы после ухода с квартиры ссылка была подсвеченной
+$(`[data-flat=${currentFlat}]`).toggleClass("current-flat"); // подсвечиваем текущую квартиру на картинке
+ 
+});
+
+
 
    floorPath.on('click', toggleModal); // при клике на этаж, открывается модальное окно
    modalCloseButton.on('click', toggleModal); // при клике на кнопку закрыть, закрывается модальное окно
