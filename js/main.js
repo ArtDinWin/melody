@@ -4,6 +4,10 @@ var currentFloor = 2; // переменная где хранится текущ
 var currentUp = $(".counter-up");// увеличение этажа по кнопке вверх
 var currentDown = $(".counter-down");// уменьшение этажа по кнопке вниз
 var floorPath = $(".home-image path"); // Каждый отдельный этаж в svg
+var modal = $(".modal");
+var modalCloseButton = $(".modal-close-button");
+var viewFlatsButton = $(".view-flats");
+
 // on('click' при клике или on('mouseover' при наведении
    floorPath.on('mouseover', function(){
        floorPath.removeClass('current-floor');  // удаляем активный класс у этажей
@@ -11,6 +15,11 @@ currentFloor = $(this).attr("data-floor"); // получаем значение 
     $(".counter").text(currentFloor); // записываем значение этажа в счетчик
     $(`[data-floor=${currentFloor}]`).toggleClass("current-floor"); // подсвечиваем текущий этаж, чтобы после ухода с этажа он был подсвеченный
 });
+
+   floorPath.on('click', toggleModal); // при клике на этаж, открывается модальное окно
+   modalCloseButton.on('click', toggleModal); // при клике на кнопку закрыть, закрывается модальное окно
+   viewFlatsButton.on('click', toggleModal); // при клике на кнопку закрыть, закрывается модальное окно
+    
 
 currentUp.on('click', function(){ // отслеживаем клик по кнопке вверх
 if(currentFloor<18) { // проверяем  значение этажа, оно не должно быть больше 18
@@ -33,6 +42,10 @@ floorPath.removeClass('current-floor');
 $(`[data-floor=${usCurrentFloor}]`).toggleClass("current-floor");
 }
 });
+
+function toggleModal(){ // функция открыть/закрыть окно
+    modal.toggleClass("is-open");
+}
 
 
 });
