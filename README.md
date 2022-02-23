@@ -1,6 +1,6 @@
 # melody - Учебный проект 2021
 ![Preview](https://github.com/ArtDinWin/melody/blob/main/img/preview.jpg)
-# Посмотреть тут - https://artdinwin.github.io/melody/
+#### Посмотреть тут - https://artdinwin.github.io/melody/
 
 ## Проект выполнил: Топоров Артем
 
